@@ -1,0 +1,35 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3" [class.expanded]="isSidebarOpen">
+        <!-- (click)="toggleSidebar()" -->
+
+        <button mat-raised-button [matMenuTriggerFor]="menu" aria-label="Open navigation menu">
+          <span class="d-flex align-items-center">  <i class="fas fa-bars cursor-pointer me-2 d-none d-md-block" style="font-size: 20px;"></i> Menu</span>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logNavigation('/dashboard/sales')">
+              Sales Dashboard
+            </button>
+            <button mat-menu-item (click)="logNavigation('dashboard/performance')">
+              Performance Dashboard
+            </button>
+            <button mat-menu-item (click)="logNavigation('dashboard/user-engagement')">
+              User Engagement Dashboard
+            </button>
+          </mat-menu>
+
+        <div class="mx-auto">
+            <span>
+                <img src="assets/images/angular.png" height="40px" alt="Angular Logo">
+            </span>
+        </div>
+
+        <span>
+            <button mat-raised-button (click)="openGitHub()">
+              <span class="d-flex align-items-center">
+                <img src="assets/images/github.svg" alt="" height="30px">
+                <span class="ms-2 text-dark d-none d-md-block">GitHub</span>
+              </span>
+            </button>
+          </span>
+    </nav>
+</header>

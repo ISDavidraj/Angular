@@ -1,0 +1,95 @@
+<div class="dashboard-container">
+    <h2>Performance Dashboard</h2>
+    <div class="controls">
+        <div class="mb-2">
+            <label for="timeframe" class="mx-2">Select Timeframe:</label>
+            <select id="timeframe" (change)="onTimeframeChange($event)">
+                <option *ngFor="let timeframe of metrics?.timeFrames" [value]="timeframe">
+                    {{ timeframe | titlecase }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <!-- Key Metrics -->
+        <div class="col-md-6 col-lg-4">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">Key Metrics</span>
+                    <div class="chart-type-selector">
+                        <select [(ngModel)]="selectedChartTypeKeyMetrics" (change)="onChartTypeChange($event, 'keyMetrics')">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.keyMetrics?.series" [chart]="chartOptions.keyMetrics?.chart"
+                    [xaxis]="chartOptions.keyMetrics?.xaxis" [colors]="chartOptions.keyMetrics?.colors">
+                </apx-chart>
+            </div>
+        </div>
+
+        <!-- EBITDA -->
+        <div class="col-md-6 col-lg-4">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">EBITDA</span>
+                    <div class="chart-type-selector">
+                        <select [(ngModel)]="selectedChartTypeEbitda" (change)="onChartTypeChange($event, 'ebitda')">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.ebitda?.series" [chart]="chartOptions.ebitda?.chart"
+                    [xaxis]="chartOptions.ebitda?.xaxis" [colors]="chartOptions.ebitda?.colors">
+                </apx-chart>
+            </div>
+        </div>
+
+        <!-- Customer Satisfaction -->
+        <div class="col-md-6 col-lg-4">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">Customer Satisfaction</span>
+                    <div class="chart-type-selector">
+                        <select [(ngModel)]="selectedChartTypeCustomerSatisfaction"
+                            (change)="onChartTypeChange($event, 'customerSatisfaction')">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.customerSatisfaction?.series"
+                    [chart]="chartOptions.customerSatisfaction?.chart"
+                    [xaxis]="chartOptions.customerSatisfaction?.xaxis"
+                    [colors]="chartOptions.customerSatisfaction?.colors">
+                </apx-chart>
+            </div>
+        </div>
+
+        <!-- Financial Metrics -->
+        <div class="col-md-6 col-lg-12">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">Financial Metrics</span>
+                    <div class="chart-type-selector">
+                        <select id="chartTypeFinancialMetrics" (change)="onChartTypeChange($event, 'financialMetrics')">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.financialMetrics?.series"
+                    [chart]="chartOptions.financialMetrics?.chart" [xaxis]="chartOptions.financialMetrics?.xaxis"
+                    [colors]="chartOptions.financialMetrics?.colors">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</div>

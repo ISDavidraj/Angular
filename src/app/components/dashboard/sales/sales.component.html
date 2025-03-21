@@ -1,0 +1,87 @@
+<div class="dashboard-container">
+    <h2>Sales Dashboard</h2>
+
+    <div class="row g-3">
+        <!-- Sales Analytics -->
+        <div class="col-md-12 col-lg-4">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">Sales Analytics</span>
+                    <div class="chart-type-selector">
+                        <select [(ngModel)]="selectedChartTypeSalesAnalytics" (change)="onChartTypeChange($event, 'salesAnalytics')">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.salesAnalytics?.series" [chart]="chartOptions.salesAnalytics?.chart"
+                    [xaxis]="chartOptions.salesAnalytics?.xaxis" [colors]="chartOptions.salesAnalytics?.colors">
+                </apx-chart>
+            </div>
+        </div>
+
+        <!-- Orders by Geography -->
+        <div class="col-md-6 col-lg-4">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">Orders by Geography</span>
+                    <div class="chart-type-selector">
+                        <select [(ngModel)]="selectedChartTypeOrdersGeography" (change)="onChartTypeChange($event, 'ordersGeography')">
+                            <option value="pie">Pie Chart</option>
+                            <option value="donut">Donut Chart</option>
+                            <option value="radialBar">Radial Bar Chart</option>
+                            <option value="polarArea">Polar Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.ordersGeography?.series"
+                    [labels]="chartOptions.ordersGeography?.labels" [chart]="chartOptions.ordersGeography?.chart"
+                    [colors]="chartOptions.ordersGeography?.colors">
+                </apx-chart>
+            </div>
+        </div>
+
+        <!-- Top Categories -->
+        <div class="col-md-6 col-lg-4">
+            <div class="chart-card">
+                <div class="chart-type">
+                    <span class="chart-title">Top Categories</span>
+                    <div class="chart-type-selector">
+                        <select [(ngModel)]="selectedChartTypeTopCategories" (change)="onChartTypeChange($event, 'topCategories')">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="area">Area Chart</option>
+                        </select>
+                    </div>
+                </div>
+                <apx-chart [series]="chartOptions.topCategories?.series" [chart]="chartOptions.topCategories?.chart"
+                    [xaxis]="chartOptions.topCategories?.xaxis" [colors]="chartOptions.topCategories?.colors">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sales Details Table -->
+    <div class="table-card table-responsive mt-3">
+        <span class="chart-title">Sales Details</span>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sale of salesData?.salesDetails">
+                    <td>{{ sale.product }}</td>
+                    <td>₹{{ sale.price | number }}</td>
+                    <td>₹{{ sale.quantity | number }}</td>
+                    <td>₹{{ sale.total | number }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
