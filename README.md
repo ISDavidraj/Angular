@@ -100,6 +100,6 @@ This project provides three interactive dashboards for visualizing User Engageme
 ## **Contact**
 For questions, feedback, or contributions, please contact:
 
-- **Your Name**: **I.David Raj**
+- **Name**: **I.David Raj**
 - **Phone**: [+91 7598960792](tel:+917598960792)
 - **Email**: [idavidraj@hotmail.com](mailto:idavidraj@hotmail.com)
